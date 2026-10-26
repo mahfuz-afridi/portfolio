@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>afridiprofiule.com &amp; Designer Portfolio</title>
+  <meta name="description" content="Personal portfolio of YOUR_NAME, a student and aspiring web developer building modern, responsive websites.">
+  <meta name="theme-color" content="#050B16">
+
+  <!-- Social sharing. Replace YOUR_SITE_URL after you deploy, and use a real image. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="YOUR_NAME | Web Developer &amp; Designer">
+  <meta property="og:description" content="Modern, responsive web projects and experiments by YOUR_NAME.">
+  <meta property="og:image" content="YOUR_SITE_URL/assets/images/profile-placeholder.svg">
+  <meta property="og:url" content="YOUR_SITE_URL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YOUR_NAME | Web Developer &amp; Designer">
+  <meta name="twitter:description" content="Modern, responsive web projects and experiments by YOUR_NAME.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- Optional web fonts. If they fail to load, the system fonts in style.css are used. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Caveat:wght@600&amp;display=swap">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Data files first, then behavior. All scripts are classic scripts, so the site works from file:// -->
+  <script src="js/config.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/navigation.js" defer></script>
+  <script src="js/contact.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- Icon sprite: every icon on the page is drawn from here with <use href="#i-name"> -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+      <symbol id="i-twitter" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+      <!-- Skill icons -->
+      <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+      <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></symbol>
+      <symbol id="i-js" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 9v5.5a2 2 0 0 1-2 2 2 2 0 0 1-1.6-.8M15.5 16c.5.7 1.2 1 2 1 1 0 1.8-.5 1.8-1.4 0-2.3-3.8-1.2-3.8-3.6 0-.9.8-1.5 1.8-1.5.8 0 1.5.3 1.9.9"/></symbol>
+      <symbol id="i-react" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></symbol>
+      <symbol id="i-git" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+      <symbol id="i-figma" viewBox="0 0 24 24"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></symbol>
+      <symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER / NAVIGATION ================= -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Back to top">
+        <span class="brand__logo" aria-hidden="true" data-bind="initials">YN</span>
+        <span class="brand__name" data-bind="name">Afridi</span>
+      </a>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a class="nav__link" href="#home">Home</a></li>
+        <li><a class="nav__link" href="#about">About</a></li>
+        <li><a class="nav__link" href="#skills">Skills</a></li>
+        <li><a class="nav__link" href="#projects">Projects</a></li>
+        <li><a class="nav__link" href="#resume">Resume</a></li>
+        <li><a class="nav__link" href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light theme" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#i-sun"></use></svg>
+        </button>
+        <button class="icon-btn nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu" hidden>
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <span class="badge">Hello, I'm</span>
+          <h1 class="hero__title" id="hero-title"><span class="accent" data-bind="name">Afridi</span></h1>
+          <p class="hero__role" data-bind="title">Web Developer &amp; Designer</p>
+          <p class="hero__intro" data-bind="intro">I’m a student learning web development. I enjoy turning ideas into clean, responsive websites and I’m always practicing something new.</p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#projects">View My Projects <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"></use></svg></a>
+            <a class="btn btn--secondary" href="#contact">Contact Me <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg></a>
+          </div>
+
+          <ul class="social-links" data-socials aria-label="Social profiles"></ul>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <div class="hero__ring hero__ring--outer" aria-hidden="true"></div>
+          <div class="hero__ring hero__ring--inner" aria-hidden="true"></div>
+          <div class="hero__dot hero__dot--a" aria-hidden="true"></div>
+          <div class="hero__dot hero__dot--b" aria-hidden="true"></div>
+          <div class="hero__portrait">
+            <img src="assets/images/about-placeholder 3.png" alt="Portrait of YOUR_NAME (placeholder image, replace with your photo)" width="600" height="700" fetchpriority="high">
+          </div>
+          <span class="hero__note" aria-hidden="true">Creative mind</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div class="about__media reveal">
+          <div class="about__frame">
+            <img src="assets/images/about-placeholder 3.png" alt="Secondary portrait of YOUR_NAME (placeholder image, replace with your photo)" width="600" height="700" loading="lazy">
+          </div>
+        </div>
+
+        <div class="about__content reveal">
+          <header class="section-title">
+            <span class="section-title__label">About Me</span>
+            <h2 class="section-title__heading" id="about-title">Who Am I?</h2>
+          </header>
+
+          <p class="about__text">Hi! I'm a passionate learner who enjoys exploring technology and creating modern, user-friendly websites. I love turning creative ideas into reality through clean design and simple, functional code.</p>
+          <p class="about__text">I'm always eager to learn new skills, improve my problem-solving abilities, and build projects that make a difference. My goal is to grow as a developer and create meaningful digital experiences.</p>
+
+          <ul class="about__highlights">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Always eager to learn new technologies and improve my skills.</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Focused on writing clean code and creating user-friendly designs.</span></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span>Passionate about problem-solving and building creative projects.</span></li>
+          </ul>
+
+          <ul class="info-cards">
+            <li class="info-card">
+              <span class="info-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-pin"></use></svg></span>
+              <div><p class="info-card__label">Location</p><p class="info-card__value" data-bind="location">YOUR_LOCATION</p></div>
+            </li>
+            <li class="info-card">
+              <span class="info-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-book"></use></svg></span>
+              <div><p class="info-card__label">Education</p><p class="info-card__value">HSc 1st year in BAFSC</p></div>
+            </li>
+            <li class="info-card">
+              <span class="info-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-heart"></use></svg></span>
+              <div><p class="info-card__label">Business</p><p class="info-card__value"></p>no Business</div>
+            </li>
+            <li class="info-card">
+              <span class="info-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-briefcase"></use></svg></span>
+              <div><p class="info-card__label">Experience</p><p class="info-card__value">0 year work Experience</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section section--alt" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-title section-title--center reveal">
+          <span class="section-title__label">My Skills</span>
+          <h2 class="section-title__heading" id="skills-title">Tools I Work With</h2>
+        </header>
+        <p class="section__note reveal">Sample list. Edit, add, or remove cards in index.html so they match your real skills.</p>
+
+        <ul class="skills-grid">
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-code"></use></svg></span><span class="skill-card__name">HTML</span></li>
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-layout"></use></svg></span><span class="skill-card__name">CSS</span></li>
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-js"></use></svg></span><span class="skill-card__name">JavaScript</span></li>
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-react"></use></svg></span><span class="skill-card__name">React</span></li>
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-git"></use></svg></span><span class="skill-card__name">Git</span></li>
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-github"></use></svg></span><span class="skill-card__name">GitHub</span></li>
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-figma"></use></svg></span><span class="skill-card__name">Figma</span></li>
+          <li class="skill-card reveal"><span class="skill-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-terminal"></use></svg></span><span class="skill-card__name">VS Code</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-title section-title--center reveal">
+          <span class="section-title__label">My Work</span>
+          <h2 class="section-title__heading" id="projects-title">Featured Projects</h2>
+        </header>
+        <p class="section__note reveal">These are clearly marked sample projects. Edit js/projects.js to show your own.</p>
+
+        <!-- Cards are generated from js/projects.js -->
+        <div class="projects-grid" id="projects-grid">
+          <noscript><p class="section__note">Enable JavaScript to see the project cards.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RESUME ================= -->
+    <section class="section section--alt" id="resume" aria-labelledby="resume-title">
+      <div class="container">
+        <header class="section-title section-title--center reveal">
+          <span class="section-title__label">Resume</span>
+          <h2 class="section-title__heading" id="resume-title">Education &amp; Experience</h2>
+        </header>
+        <p class="section__note reveal">All entries below are placeholders. Replace them in index.html with your own, and remove any card you do not need.</p>
+
+        <div class="resume__grid">
+          <article class="timeline-card reveal">
+            <h3 class="timeline-card__heading">Education</h3>
+            <ul class="timeline">
+              <li class="timeline__item">
+                <p class="timeline__period">2025-2027</p>
+                <h4 class="timeline__title">HSC</h4>
+                <p class="timeline__place">BAF Shaheen College Chattogram</p>
+                <p class="timeline__text">completed SSC from ALS</p>
+              </li>
+            </ul>
+          </article>
+
+          <article class="timeline-card reveal">
+            <h3 class="timeline-card__heading">Experience</h3>
+            <ul class="timeline">
+              <li class="timeline__item">
+                <p class="timeline__period">YEAR - YEAR</p>
+                <h4 class="timeline__title">YOUR_ROLE</h4>
+                <p class="timeline__place">YOUR_ORGANIZATION</p>
+                <p class="timeline__text">SAMPLE: Short note on what you did. Delete this card if you have none yet.</p>
+              </li>
+            </ul>
+          </article>
+
+          <article class="timeline-card reveal">
+            <h3 class="timeline-card__heading">Achievements &amp; Certifications</h3>
+            <ul class="timeline">
+              <li class="timeline__item">
+                <p class="timeline__period">YEAR</p>
+                <h4 class="timeline__title">YOUR_CERTIFICATE_OR_ACHIEVEMENT</h4>
+                <p class="timeline__place">ISSUER</p>
+                <p class="timeline__text">SAMPLE: Delete this card if you have nothing to show yet.</p>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="resume__cv reveal">
+          <!-- js/main.js turns this into a working download link when files/resume.pdf exists -->
+          <button class="btn btn--primary" id="cv-button" type="button" disabled>
+            <svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg> CV not available yet
+          </button>
+          <p class="resume__hint" id="cv-hint">Add your PDF at <code>files/resume.pdf</code>, then see the README to switch this button on.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+        <div class="contact__info reveal">
+          <header class="section-title">
+            <span class="section-title__label">Contact</span>
+            <h2 class="section-title__heading" id="contact-title">Let's Work Together</h2>
+          </header>
+          <p class="about__text" data-bind="invitation">Have a project in mind or just want to say hello? Send a message and I'll get back to you.</p>
+
+          <ul class="contact__list">
+            <li>
+              <span class="info-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"></use></svg></span>
+              <a href="#contact" id="contact-email" data-bind="email">laufey.e661@gmail.com</a>
+            </li>
+            <li id="contact-phone-item" hidden>
+              <span class="info-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-phone"></use></svg></span>
+              <a href="#contact" id="contact-phone"></a>
+            </li>
+            <li id="contact-location-item" hidden>
+              <span class="info-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-pin"></use></svg></span>
+              <span data-bind="location"></span>
+            </li>
+          </ul>
+
+          <ul class="social-links" data-socials aria-label="Social profiles"></ul>
+        </div>
+
+        <form class="contact__form reveal" id="contact-form" novalidate aria-label="Contact form">
+          <div class="field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" autocomplete="name" required aria-describedby="contact-name-error">
+            <p class="field__error" id="contact-name-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-email-input">Email</label>
+            <input type="email" id="contact-email-input" name="email" autocomplete="email" required aria-describedby="contact-email-input-error">
+            <p class="field__error" id="contact-email-input-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required aria-describedby="contact-message-error"></textarea>
+            <p class="field__error" id="contact-message-error" role="alert"></p>
+          </div>
+
+          <!-- Honeypot: hidden from people. Bots that fill it in are ignored. -->
+          <div class="field field--trap" aria-hidden="true">
+            <label for="contact-company">Company</label>
+            <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="btn btn--primary" type="submit" id="contact-submit">
+            <span id="contact-submit-label">Send Message</span> <svg class="icon" aria-hidden="true"><use href="#i-send"></use></svg>
+          </button>
+
+          <div class="form-status" id="form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <a class="brand" href="#home" aria-label="Back to top">
+        <span class="brand__logo" aria-hidden="true" data-bind="initials">YN</span>
+        <span class="brand__name" data-bind="name">YOUR_NAME</span>
+      </a>
+
+      <p class="footer__copy">&copy; <span data-year>2026</span> <span data-bind="name">YOUR_NAME</span>. All rights reserved.</p>
+
+      <div class="footer__right">
+        <ul class="social-links" data-socials aria-label="Social profiles"></ul>
+        <a class="footer__top" href="#home" id="back-to-top">Back to top <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"></use></svg></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

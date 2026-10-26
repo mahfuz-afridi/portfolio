@@ -1,0 +1,111 @@
+/* =====================================================
+   animations.css: restrained motion only
+   ===================================================== */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes portrait-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Hero content fades in on load (pure CSS, so it works even if JavaScript fails) */
+.hero__content > * {
+  animation: fade-up 0.7s ease both;
+}
+
+.hero__content > :nth-child(2) { animation-delay: 0.08s; }
+.hero__content > :nth-child(3) { animation-delay: 0.16s; }
+.hero__content > :nth-child(4) { animation-delay: 0.24s; }
+.hero__content > :nth-child(5) { animation-delay: 0.32s; }
+.hero__content > :nth-child(6) { animation-delay: 0.4s; }
+
+.hero__portrait {
+  animation: portrait-drift 7s ease-in-out infinite;
+}
+
+.hero__glow {
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+
+.hero__ring--outer {
+  animation: spin 60s linear infinite;
+}
+
+.hero__dot--a {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero__dot--b {
+  animation: float 7s ease-in-out infinite reverse;
+}
+
+/* Scroll reveal: only hidden once main.js has added .js-ready, so content is never lost without JavaScript */
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .js-ready .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
