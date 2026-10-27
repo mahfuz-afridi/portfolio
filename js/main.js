@@ -22,7 +22,8 @@
     });
 
     if (config.name && /^YOUR_/.test(config.name) === false) {
-      document.title = config.name + ' | ' + (config.title || 'Portfolio');
+      document.title = 'Afridi Portfolio'; // jei nam chan likhun
+      //document.title = config.name + ' | ' + (config.title || 'Portfolio');
     }
   }
 
