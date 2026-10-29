@@ -23,7 +23,7 @@
       title: 'Personal Portfolio',
       description:
         'SAMPLE: A responsive portfolio website with a dark theme, project showcase, and contact form.',
-      image: 'assets/images/portfolio-project.svg',
+      image: '..\assets/images/portfolio-project.svg',
       imageAlt: 'Placeholder thumbnail for the Personal Portfolio sample project',
       tags: ['HTML', 'CSS', 'JavaScript'],
       demoUrl: '',
