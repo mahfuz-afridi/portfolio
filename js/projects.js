@@ -33,7 +33,7 @@
       title: 'BAFSC web page',
       description:
         'SAMPLE: A simple responsive web page, where you can know everythin about the collage  ',
-      image: 'assets/images/todo-app.svg',
+      image: 'assets/images/clg.png',
       imageAlt: 'Placeholder thumbnail for the To-Do Application sample project',
       tags: ['JavaScript', 'localStorage', 'CSS'],
       demoUrl: 'https://mahfuz-afridi.github.io/clg1/',
