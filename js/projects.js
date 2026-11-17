@@ -36,7 +36,7 @@
       image: 'assets/images/clg.png',
       imageAlt: 'Placeholder thumbnail for the To-Do Application sample project',
       tags: ['JavaScript', 'localStorage', 'CSS'],
-      demoUrl: 'https://mahfuz-afridi.github.io/clg1/',
+      demoUrl: 'https://mahfuz-afridi.github.io/collage1/',
       sourceUrl: '',
     },
   ];
