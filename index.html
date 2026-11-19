@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Caveat:wght@600&amp;display=swap">
-
+  <link rel="stylesheet" href="css/animations1.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&amp;display=swap">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
@@ -38,6 +38,26 @@
   <script src="js/contact.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/countdown.js" defer></script>
+  <!-- Intro screen: removed from the page by js/main.js when it finishes -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__glow"></div>
+    <div class="intro__stage">
+     <span class="intro__name" data-bind="name">Afridi</span>
+
+      <svg class="intro__line" viewBox="0 0 400 30" focusable="false">
+        <defs>
+          <linearGradient id="intro-line-grad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#6d4ae0" stop-opacity="0"/>
+            <stop offset="0.35" stop-color="#8b5cf6"/>
+            <stop offset="0.7" stop-color="#a78bfa"/>
+            <stop offset="1" stop-color="#a78bfa" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <path pathLength="1" d="M6 20 C 70 4, 130 30, 205 13 S 320 6, 394 16"/>
+      </svg>
+    </div>
+  </div>
+  
 </head>
 <body>
 
