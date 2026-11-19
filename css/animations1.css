@@ -1,0 +1,273 @@
+/* =====================================================
+   animations.css: restrained motion only
+   ===================================================== */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes portrait-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Hero content fades in on load (pure CSS, so it works even if JavaScript fails) */
+.hero__content > * {
+  animation: fade-up 0.7s ease both;
+}
+
+.hero__content > :nth-child(2) { animation-delay: 0.08s; }
+.hero__content > :nth-child(3) { animation-delay: 0.16s; }
+.hero__content > :nth-child(4) { animation-delay: 0.24s; }
+.hero__content > :nth-child(5) { animation-delay: 0.32s; }
+.hero__content > :nth-child(6) { animation-delay: 0.4s; }
+
+.hero__portrait {
+  animation: portrait-drift 7s ease-in-out infinite;
+}
+
+.hero__glow {
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+
+.hero__ring--outer {
+  animation: spin 60s linear infinite;
+}
+
+.hero__dot--a {
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero__dot--b {
+  animation: float 7s ease-in-out infinite reverse;
+}
+
+/* Scroll reveal: only hidden once main.js has added .js-ready, so content is never lost without JavaScript */
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.js-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .js-ready .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* =====================================================
+   Intro screen (about 2.8s): signature reveal, then fade out
+   Timeline: glow 0.1s, name writes 0.35s to 2.05s, underline 1.3s to 2.1s, fade 2.25s to 2.8s
+   ===================================================== */
+
+/* Locked while the intro plays; main.js removes the class when the fade-out begins */
+html.intro-active {
+  overflow: hidden;
+}
+
+/* Hero text waits behind the intro, then animates in as the intro fades */
+html.intro-active .hero__content > * {
+  animation-play-state: paused;
+}
+
+.intro {
+  /* Fixed dark values (the same as the dark theme tokens) so the intro looks the same in either theme */
+  --intro-bg: #050b16;
+  --intro-ink: #f8fafc;
+
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--intro-bg);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.intro__glow {
+  position: absolute;
+  width: min(90vw, 720px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.26) 0%, rgba(139, 92, 246, 0.08) 40%, transparent 68%);
+  opacity: 0;
+}
+
+.intro__stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+}
+
+.intro__name {
+  display: block;
+  /* Extra padding so the mask never clips the swashes or the glow */
+  padding: 0.35em 0.45em 0.3em;
+  font-family: 'Dancing Script', 'Segoe Script', 'Brush Script MT', cursive;
+  font-weight: 700;
+  font-size: clamp(4.5rem, 19vw, 10.5rem);
+  line-height: 1.1;
+  color: var(--intro-ink);
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.55), 0 0 42px rgba(139, 92, 246, 0.3);
+
+  /* Soft-edged wipe: starts fully hidden, slides open from left to right */
+  -webkit-mask-image: linear-gradient(100deg, #000 36%, transparent 44%);
+  mask-image: linear-gradient(100deg, #000 36%, transparent 44%);
+  -webkit-mask-size: 300% 100%;
+  mask-size: 300% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+}
+
+.intro__line {
+  width: clamp(150px, 42vw, 360px);
+  height: auto;
+  margin-top: -0.6rem;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.7));
+}
+
+.intro__line path {
+  fill: none;
+  stroke: url(#intro-line-grad);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* ----- Playing (class added by main.js once the font is ready) ----- */
+.intro.is-playing .intro__glow {
+  animation: intro-glow 1.6s ease 0.1s both;
+}
+
+.intro.is-playing .intro__name {
+  animation:
+    intro-write 1.7s cubic-bezier(0.5, 0.1, 0.3, 1) 0.35s both,
+    intro-focus 1.7s ease 0.35s both;
+}
+
+.intro.is-playing .intro__line path {
+  animation: intro-draw 0.8s ease-in-out 1.3s both;
+}
+
+.intro.is-playing {
+  animation: intro-out 0.55s ease 2.25s forwards;
+}
+
+.intro.is-playing .intro__stage {
+  animation: intro-stage-out 0.55s ease 2.25s forwards;
+}
+
+/* ----- Skipped by click or key press: leave straight away ----- */
+.intro.is-leaving {
+  animation: intro-out 0.4s ease 0s forwards;
+}
+
+.intro.is-leaving .intro__stage {
+  animation: intro-stage-out 0.4s ease 0s forwards;
+}
+
+/* ----- No-JavaScript failsafe: the overlay can never stay forever ----- */
+.intro:not(.is-playing):not(.is-leaving) {
+  animation: intro-out 0.01s linear 4s forwards;
+}
+
+@keyframes intro-glow {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes intro-write {
+  from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  to   { -webkit-mask-position: 0 0;    mask-position: 0 0; }
+}
+
+@keyframes intro-focus {
+  from { filter: blur(5px); transform: translateY(8px); }
+  to   { filter: blur(0);   transform: translateY(0); }
+}
+
+@keyframes intro-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes intro-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes intro-stage-out {
+  to { transform: scale(1.05); }
+}
+
+/* Reduced motion: skip the intro completely (main.js also removes it) */
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none !important;
+  }
+
+  html.intro-active {
+    overflow: auto;
+  }
+}
