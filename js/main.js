@@ -157,7 +157,44 @@
       target.focus({ preventScroll: true });
     });
   }
+// Skip: click, tap or any key
+    function leave() {
+      if (leaving || finished) return;
+      leaving = true;
+      root.classList.remove('intro-active');
+      intro.classList.add('is-leaving');
+    }
 
+    function play() {
+      if (started || leaving) return;
+      started = true;
+      intro.classList.add('is-playing');
+      window.setTimeout(finish, 4500); // safety net
+    }
+
+    // Unlock scrolling and start the hero animation as the fade-out begins
+    intro.addEventListener('animationstart', function (event) {
+      if (event.target === intro && event.animationName === 'intro-out') {
+        root.classList.remove('intro-active');
+      }
+    });
+    intro.addEventListener('animationend', function (event) {
+      if (event.target === intro && event.animationName === 'intro-out') finish();
+    });
+
+    intro.addEventListener('click', leave);
+    document.addEventListener('keydown', leave, { once: true });
+
+    // Wait for Dancing Script (max 1.2s) so the name never flashes in a fallback font
+    if (document.fonts && document.fonts.load) {
+      var wait = new Promise(function (resolve) { window.setTimeout(resolve, 1200); });
+      Promise.race([document.fonts.load('700 1em "Dancing Script"', config.name || ' Afridi'), wait]).then(play, play);
+    } else {
+      play();
+    }
+  }
+
+  setupIntro();
   applyBindings();
   applyContact();
   renderSocials();
