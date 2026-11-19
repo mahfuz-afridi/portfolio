@@ -1,0 +1,330 @@
+/* =====================================================
+   countdown.css: Dr. Doom countdown (floating trigger + full-screen overlay)
+   Self-contained palette, so it looks the same in the light and dark site theme.
+   ===================================================== */
+
+/* ----- Floating trigger (bottom-right) ----- */
+.doom-fab {
+  --doom-green: #39ff14;
+
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right, 0px));
+  bottom: max(18px, env(safe-area-inset-bottom, 0px));
+  z-index: 900;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba(57, 255, 20, 0.25);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, #173a1d 0%, #060d08 72%);
+  color: var(--doom-green);
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(57, 255, 20, 0.12);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease,
+    opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.doom-fab[hidden] {
+  display: none;
+}
+
+.doom-fab:hover,
+.doom-fab:focus-visible {
+  transform: translateY(-2px) scale(1.06);
+  border-color: rgba(57, 255, 20, 0.7);
+  box-shadow: 0 0 22px rgba(57, 255, 20, 0.45), 0 0 48px rgba(57, 255, 20, 0.16);
+}
+
+.doom-fab:focus-visible {
+  outline: 2px solid var(--doom-green);
+  outline-offset: 4px;
+}
+
+.doom-fab__icon {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 4px rgba(57, 255, 20, 0.45));
+}
+
+.doom-fab__shape {
+  fill: #0b1a0e;
+  stroke: rgba(57, 255, 20, 0.55);
+  stroke-width: 1.5;
+}
+
+.doom-fab__eyes {
+  fill: var(--doom-green);
+}
+
+.doom-fab__grille {
+  stroke: rgba(57, 255, 20, 0.6);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* Fade the trigger away while the overlay is open; it returns on close */
+html.doom-open .doom-fab {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+}
+
+/* Stop the page behind the overlay from scrolling */
+html.doom-open {
+  overflow: hidden;
+}
+
+/* ----- Full-screen overlay ----- */
+.doom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  padding: clamp(4.5rem, 10vh, 6rem) clamp(1rem, 4vw, 2.5rem) clamp(2rem, 6vh, 3.5rem);
+  overflow-y: auto;
+  background: #000;
+  color: #e9ffe4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.doom-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Background layers */
+.doom-overlay__bg,
+.doom-overlay__shade,
+.doom-overlay__fog,
+.doom-overlay__scan {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* The Doom background image is optional: put it at assets/images/doom-background.jpg.
+   Without it, the radial gradient below is the background. */
+.doom-overlay__bg {
+  --doom-bg-pos: center;
+
+  inset: -3%;
+  background:
+    url('../assets/images/doom-bg.jpg') var(--doom-bg-pos) / cover no-repeat,
+    radial-gradient(ellipse at 50% 35%, #123419 0%, #050a06 58%, #000 100%);
+}
+
+.doom-overlay__shade {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.25) 40%, rgba(0, 0, 0, 0.8) 100%),
+    radial-gradient(ellipse at 50% 45%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.75) 70%);
+}
+
+.doom-overlay__fog {
+  inset: -25%;
+  background: radial-gradient(closest-side, rgba(57, 255, 20, 0.12), transparent 70%);
+  opacity: 0.6;
+  animation: doom-fog 18s ease-in-out infinite alternate;
+}
+
+.doom-overlay__scan {
+  opacity: 0.35;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0) 0 2px, rgba(0, 0, 0, 0.35) 2px 3px);
+}
+
+/* Slow zoom on the background while the overlay is open */
+.doom-overlay.is-open .doom-overlay__bg {
+  animation: doom-zoom 14s ease-out both;
+}
+
+@keyframes doom-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes doom-fog {
+  from {
+    transform: translate3d(-6%, -2%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6%, 3%, 0) scale(1.12);
+  }
+}
+
+@keyframes doom-sep {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Close button */
+.doom-overlay__close {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top, 0px));
+  right: max(18px, env(safe-area-inset-right, 0px));
+  z-index: 3;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid rgba(57, 255, 20, 0.45);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #c9ffc0;
+  font: 600 0.78rem/1 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doom-overlay__close:hover,
+.doom-overlay__close:focus-visible {
+  color: #39ff14;
+  border-color: #39ff14;
+  background: rgba(57, 255, 20, 0.08);
+  box-shadow: 0 0 18px rgba(57, 255, 20, 0.35);
+}
+
+.doom-overlay__close:focus-visible {
+  outline: 2px solid #39ff14;
+  outline-offset: 3px;
+}
+
+/* Content */
+.doom-overlay__content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  width: min(100%, 1100px);
+  margin: auto;
+  text-align: center;
+}
+
+.doom-overlay__kicker {
+  margin: 0;
+  font: 500 0.75rem/1.4 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(57, 255, 20, 0.8);
+}
+
+.doom-overlay__title {
+  margin: 0;
+  font: 700 clamp(1.05rem, 2.4vw, 1.5rem)/1.2 'Orbitron', 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #eafff0;
+  text-shadow: 0 0 18px rgba(57, 255, 20, 0.35);
+}
+
+.doom-timer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.doom-unit {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.doom-unit__num {
+  display: block;
+  min-width: 2ch;
+  font: 700 clamp(2.6rem, 9vw, 7.5rem)/1 'Orbitron', 'Inter', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  color: #f0fff0;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.55), 0 0 22px rgba(57, 255, 20, 0.3),
+    0 0 60px rgba(57, 255, 20, 0.14);
+}
+
+.doom-unit__label {
+  font: 600 0.72rem/1 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(200, 255, 190, 0.7);
+}
+
+.doom-timer__sep {
+  font: 700 clamp(2rem, 6vw, 5rem)/1 'Orbitron', 'Inter', system-ui, sans-serif;
+  color: rgba(57, 255, 20, 0.6);
+  text-shadow: 0 0 14px rgba(57, 255, 20, 0.5);
+  animation: doom-sep 2s ease-in-out infinite;
+}
+
+.doom-overlay__target {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(220, 255, 215, 0.62);
+}
+
+.doom-overlay__done {
+  margin: 0;
+  font: 700 clamp(1rem, 2.4vw, 1.4rem)/1.3 'Orbitron', 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #39ff14;
+  text-shadow: 0 0 16px rgba(57, 255, 20, 0.6);
+}
+
+/* ----- Responsive ----- */
+
+/* Phones: units in a 2 x 2 grid, colons hidden so nothing crowds */
+@media (max-width: 640px) {
+  .doom-overlay__bg {
+    --doom-bg-pos: 62% center;
+  }
+
+  .doom-timer {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 1rem;
+    width: min(100%, 320px);
+  }
+
+  .doom-timer__sep {
+    display: none;
+  }
+
+  .doom-unit__num {
+    font-size: clamp(2.6rem, 16vw, 4.5rem);
+  }
+}
+
+/* Short landscape screens: keep the numbers from pushing the layout off screen */
+@media (min-width: 641px) and (max-height: 560px) {
+  .doom-unit__num {
+    font-size: clamp(2.2rem, 8vh, 4rem);
+  }
+}
+
+/* ----- Reduced motion: no drifting, zooming or pulsing ----- */
+@media (prefers-reduced-motion: reduce) {
+  .doom-overlay__fog,
+  .doom-timer__sep,
+  .doom-overlay.is-open .doom-overlay__bg {
+    animation: none;
+  }
+
+  .doom-fab,
+  .doom-overlay,
+  .doom-overlay__close {
+    transition: none;
+  }
+}
