@@ -5,7 +5,7 @@
 
   // 12:00 AM on December 18, 2026 in Bangladesh (UTC+6) is 6:00 PM on December 17, 2026 in UTC.
   // To change the date, edit this one line.
-  var TARGET_MS = Date.UTC(2026, 11, 17, 18, 0, 0);
+  var TARGET_MS = Date.UTC(2026, 11, 18, 5, 0, 0);
 
   var SECOND = 1000;
   var MINUTE = 60 * SECOND;
