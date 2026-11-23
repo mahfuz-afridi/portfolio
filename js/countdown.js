@@ -3,9 +3,9 @@
 (function () {
   'use strict';
 
-// 11:00 AM on December 18, 2026 in Bangladesh (UTC+6) is 5:00 AM UTC.
-// To change the date, edit this one line.
-var TARGET_MS = Date.UTC(2026, 11, 18, 5, 0, 0);
+  // 12:00 AM on December 18, 2026 in Bangladesh (UTC+6) is 6:00 PM on December 17, 2026 in UTC.
+  // To change the date, edit this one line.
+  var TARGET_MS = Date.UTC(2026, 11, 17, 18, 0, 0);
 
   var SECOND = 1000;
   var MINUTE = 60 * SECOND;
@@ -27,6 +27,17 @@ var TARGET_MS = Date.UTC(2026, 11, 18, 5, 0, 0);
 
   var timerId = null;
   var isOpen = false;
+
+  // Background music: only downloads and plays once the overlay is opened.
+  var audio = new Audio('audio/doom-theme.mp3');
+  audio.loop = true;
+  audio.volume = 0.5;
+  audio.preload = 'none';
+
+  // Tick sound: a very short clip played once every second while the overlay is open.
+  var tickSound = new Audio('audio/tick.mp3');
+  tickSound.volume = 0.4;
+  tickSound.preload = 'auto'; // Tiny file, so load it early to avoid a delay on the first tick
 
   function pad(value) {
     return value < 10 ? '0' + value : String(value);
@@ -54,6 +65,10 @@ var TARGET_MS = Date.UTC(2026, 11, 18, 5, 0, 0);
       timerId = null; // Reached the target: stop the loop, the display stays at zero
       return;
     }
+
+    tickSound.currentTime = 0; // Restart the clip so every second gets a fresh tick
+    tickSound.play().catch(function () {}); // If the file is missing or blocked, the page still works
+
     // TARGET_MS falls on a whole second, so the digits change exactly when remaining % 1000 reaches 0
     timerId = window.setTimeout(tick, remaining % SECOND || SECOND);
   }
@@ -72,6 +87,7 @@ var TARGET_MS = Date.UTC(2026, 11, 18, 5, 0, 0);
     document.documentElement.classList.add('doom-open');
     fab.setAttribute('aria-expanded', 'true');
     stopTimer(); // Never run two loops at once
+    audio.play().catch(function () {}); // Start music inside the click, so the browser allows it
     tick();
     closeButton.focus({ preventScroll: true });
   }
@@ -80,6 +96,7 @@ var TARGET_MS = Date.UTC(2026, 11, 18, 5, 0, 0);
     if (!isOpen) return;
     isOpen = false;
     stopTimer(); // No timer runs while the overlay is closed
+    audio.pause();
     overlay.classList.remove('is-open');
     document.documentElement.classList.remove('doom-open');
     fab.setAttribute('aria-expanded', 'false');
