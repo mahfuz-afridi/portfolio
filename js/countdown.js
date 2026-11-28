@@ -29,7 +29,7 @@
   var isOpen = false;
 
   // Background music: only downloads and plays once the overlay is opened.
-  var audio = new Audio('audio/doom-theme.mp3');
+  var audio = new Audio('audio/Alan Silvestri - Whatever It Takes (From Avengers Endgame Audio Only).mp3');
   audio.loop = true;
   audio.volume = 0.5;
   audio.preload = 'none';
